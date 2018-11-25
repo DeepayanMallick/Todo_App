@@ -21,7 +21,7 @@
     {% for todo in todos %}
           <tr>
             <td>{{ forloop.counter }}</td>
-            <td>{{ todo.title }}</td>
+            <td><a href="{% url 'update_todo' todo_id=todo.pk %}">{{ todo.title }}</a></td>
             <td>{{ todo.description|truncatewords:10 }}</td>
             <td>{{ todo.done|yesno:"Yes,No" }}</td>
             <td>{{ todo.due_date }}</td>

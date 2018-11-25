@@ -5,5 +5,5 @@ class TodoForm(forms.ModelForm):
 
     class Meta:
         model = Todo
-        fields = {'title', 'due_date', 'description'}
+        fields = '__all__'
     
