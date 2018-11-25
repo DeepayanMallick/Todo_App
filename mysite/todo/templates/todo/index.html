@@ -1,0 +1,35 @@
+{% extends "todo/base.html" %}
+
+{% block title %} Home {{ block.super }} {% endblock %}
+{% block content %}
+
+<p> {{ app_name }} </p>
+<h3>Today is {{ today }}</h3>
+
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Done</th>
+        <th scope="col">Due Date</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for todo in todos %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ todo.title }}</td>
+            <td>{{ todo.description|truncatewords:10 }}</td>
+            <td>{{ todo.done|yesno:"Yes,No" }}</td>
+            <td>{{ todo.due_date }}</td>
+            <td><a class="btn btn-info" href="{% url 'todo_detail' todo_id=todo.pk %}">Show</a></td>
+          </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
